@@ -1,16 +1,20 @@
 import { useAnimations, useGLTF } from '@react-three/drei';
 import { Canvas, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { OrbitControls } from '@react-three/drei';
 import './scene.css';
 import * as THREE from 'three';
 
-function Statue({statueState,handleFocus,index}) {
+function Statue({statueState}) {
 	const [hover,setHover] = useState(null);
-	const { camera } = useThree();
-	const statue = useGLTF('/portfolio/statue.glb');
+	const [animState,setAnimState] = useState('floating');
+	const statue = useGLTF('/portfolio/portfolio.gltf');
 	const scene = useMemo(()=>{
-		return statue.scene.clone();
-	},[statue]);
+		let newScene = statue.scene//.clone();
+		return newScene;
+	},[]);
+	const animations = useAnimations(statue.animations,scene);
+	//클릭박스
 	const collider = useMemo(()=>{
 		const geometry = new THREE.BoxGeometry(2.5,5,2.5); 
 		const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} ); 
@@ -22,36 +26,45 @@ function Statue({statueState,handleFocus,index}) {
 		) 
 		return cube;
 	},[]);
-	const animations = useAnimations(statue.animations,scene);
-	//scene초기화
+	//scene, 애니메이션 초기화
 	useEffect(()=>{
+		console.log(statue.animations);
+		// let source = animations.clips[0];
+		// let clip1 = THREE.AnimationUtils.subclip(source,'floating',1,48,24);
+		// let clip2 = THREE.AnimationUtils.subclip(source,'sayHi',48,107,24);
+		// if (!animations.actions['floating']) {
+		// 	animations.actions['floating'] = animations.mixer.clipAction(clip1,scene);
+		// }
+		// if (!animations.actions['sayHi']) {
+		// 	animations.actions['sayHi'] = animations.mixer.clipAction(clip2,scene);
+		// }
+		// animations.clips.push(clip1);
+		// animations.clips.push(clip2);
+		// animations.names.push('floating');
+		// animations.names.push('sayHi');
 		scene.position.set(
 			statueState.x,
 			statueState.y,
 			statueState.z
 		)
-		return ()=>{
-			if (scene.parent) {
-				scene.parent.remove(scene);
-			}
-		}
-	},[statue])
+	},[statue,animations,scene]);
 	//애니메이션
 	useEffect(()=>{
-		const action = animations.actions["floating"];
-		if (hover) {
-			console.log('재생');
-			action.repetitions += 1;
-			action.play();
-		} else {
-			// action.fadeOut(0.5);
-		}
-
+		const action = animations.actions[animState];
+		action.reset().fadeIn(0.5).play();
+		
 		return () => {
-			// action.fadeOut(0.5);
+			action.fadeOut(0.5);
+		}
+	},[animState,scene]);
+	//애니메이션 스테이트
+	useEffect(()=>{
+		if (hover) {
+			setAnimState('sayHi');
+		} else {
+			setAnimState('floating');
 		}
 	},[hover])
-	//
 	const enterCallback = ()=>{
 		setHover(true);
 	}
@@ -60,9 +73,9 @@ function Statue({statueState,handleFocus,index}) {
 	}
 	return <>
 		<primitive
-			receiveShadow={true}
+			// receiveShadow={true}
 			object={scene} 
-			// rotation-y={THREE.MathUtils.degToRad(-90)}
+			rotation-y={THREE.MathUtils.degToRad(-90)}
 		/>
 		<primitive 
 			visible={false}
@@ -112,6 +125,7 @@ export default function Scene() {
 			}}
 			camera={{fov:23,near:0.05,far:400,position:[-73,60,73]}}
 		>
+			{/* <OrbitControls/> */}
 			<ambientLight intensity={1.5}/>
 			<directionalLight ref={lightRef} position={[73,60,0]} intensity={1.0} castShadow={true}/>
 			{
