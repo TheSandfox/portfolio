@@ -60,9 +60,9 @@ function Statue({statueState}) {
 	//애니메이션 스테이트
 	useEffect(()=>{
 		if (hover) {
-			setAnimState('sayHi');
+			setAnimState('smashLoop');
 		} else {
-			setAnimState('floating');
+			setAnimState('sitting');
 		}
 	},[hover])
 	const enterCallback = ()=>{
@@ -75,7 +75,7 @@ function Statue({statueState}) {
 		<primitive
 			// receiveShadow={true}
 			object={scene} 
-			rotation-y={THREE.MathUtils.degToRad(-90)}
+			rotation-y={THREE.MathUtils.degToRad(0)}
 		/>
 		<primitive 
 			visible={false}
@@ -125,7 +125,7 @@ export default function Scene() {
 			}}
 			camera={{fov:23,near:0.05,far:400,position:[-73,60,73]}}
 		>
-			{/* <OrbitControls/> */}
+			<OrbitControls/>
 			<ambientLight intensity={1.5}/>
 			<directionalLight ref={lightRef} position={[73,60,0]} intensity={1.0} castShadow={true}/>
 			{
