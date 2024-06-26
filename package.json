@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.107.0",
     "@react-three/fiber": "^8.16.8",
     "fs": "^0.0.1-security",
