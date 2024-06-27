@@ -12,11 +12,13 @@ function App() {
 			shadows
 			shadow-mapsize-width={1024}
 			shadow-mapsize-height={1024}
+			//캔버스 스타일
 			style={{
 				height:"100dvh",
-				backgroundColor: "var(--color-main)"
+				backgroundColor: "var(--color-main)",
+				// border: "1px solid #ff0000"
 			}}
-			camera={{fov:23,near:0.05,far:400,zoom:1.0,position:[-73,60,73]}}
+			// camera={{fov:23,near:0.05,far:400,zoom:1.0,position:[0,55,73]}}
 		>
 			<Scene></Scene>
 		</Canvas>

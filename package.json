@@ -17,6 +17,7 @@
     "@react-three/fiber": "^8.16.8",
     "fs": "^0.0.1-security",
     "gh-pages": "^6.1.1",
+    "leva": "^0.9.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
