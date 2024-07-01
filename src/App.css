@@ -1,5 +1,11 @@
 @import url('https://thesandfox.github.io/css/index.css');
 
+:root {
+	--color-backdrop1: #6ebaf0;
+	--color-backdrop2: #c4f065;
+	--color-backdrop3: #facd53;
+}
+
 ::-webkit-scrollbar {
     height: 8px;
     position: absolute;
@@ -25,11 +31,16 @@
 	position: relative;
 }
 
-#canvasWrapper {
+#sceneContent {
+	background-color: var(--color-gray2);
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100dvh;
 }
 
 #sceneProgress {
@@ -56,12 +67,31 @@
 	}
 }
 
-#canvas {
+#canvasWrapper {
+	position: relative;
 	z-index: 2;
+	width: 100%;
+	height: 100dvh;
+	background-color: var(--color-backdrop1);
+	/* background-color: var(--color-main); */
+	/* @media screen and (max-width:960px) {
+		height: 540px;
+	}
+	@media screen and (max-width:640px) {
+		height: 360px;
+	}
+	@media screen and (max-width:480px) {
+		height: 240px;
+	} */
+}
+
+#canvas {
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
 }
 
 #sceneGradient{
 	position: absolute;
+	user-select: none;
 	background: linear-gradient(
 		180deg,
 		rgba(0,0,0,0), 

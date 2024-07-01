@@ -4,11 +4,15 @@ import { Suspense } from 'react';
 import './scene.css';
 import * as THREE from 'three';
 import Statue from './Statue';
-import keyframes from '../utils/keyframes';
+import Keyframes from '../utils/keyframes';
 import { Html, OrbitControls } from '@react-three/drei';
 import config from '../utils/config';
+// import { BreakPoints, useBreakpoint } from '../utils/breakpoint';
 
-export default function Scene({progress}) {
+export default function Scene({progress, cameraZoom, sectionIndex, gotoActive}) {
+	//브레이크포인트
+	// const breakPoint = useBreakpoint();
+
 	//레퍼런스
 	const groupRef = useRef(null);
 	const orbitRef = useRef(null);
@@ -49,28 +53,19 @@ export default function Scene({progress}) {
 				transform.rotation.y,
 				transform.rotation.z
 			);
-			object.rotation.set(
-				transform.rotation.x,
-				transform.rotation.y,
-				transform.rotation.z
-			);
 		} else {
 			//스무스
 			object.position.set(
 				THREE.MathUtils.lerp(object.position.x,transform.position.x,smooth),
 				THREE.MathUtils.lerp(object.position.y,transform.position.y,smooth),
 				THREE.MathUtils.lerp(object.position.z,transform.position.z,smooth),
-			)
+			);
 			//스무스
 			object.rotation.set(
 				THREE.MathUtils.lerp(object.rotation.x,transform.rotation.x,smooth),
 				THREE.MathUtils.lerp(object.rotation.y,transform.rotation.y,smooth),
 				THREE.MathUtils.lerp(object.rotation.z,transform.rotation.z,smooth),
-			)
-			//스무스
-			object.scale.lerp(
-				transform.scale,smooth
-			)
+			);
 		}
 	},[transform]);
 	// 광원, 카메라 초기화
@@ -80,14 +75,14 @@ export default function Scene({progress}) {
 		}
 		if(!config.debug) {
 			camera.position.set(
-				keyframes.cameraPosition.getPoint(progress).x,
-				keyframes.cameraPosition.getPoint(progress).y,
-				keyframes.cameraPosition.getPoint(progress).z,
+				Keyframes.cameraPosition[sectionIndex].getPoint(progress).x,
+				Keyframes.cameraPosition[sectionIndex].getPoint(progress).y,
+				Keyframes.cameraPosition[sectionIndex].getPoint(progress).z,
 			)
 			camera.rotation.set(
-				keyframes.cameraRotation.getPoint(progress).x,
-				keyframes.cameraRotation.getPoint(progress).y,
-				keyframes.cameraRotation.getPoint(progress).z,
+				Keyframes.cameraRotation[sectionIndex].getPoint(progress).x,
+				Keyframes.cameraRotation[sectionIndex].getPoint(progress).y,
+				Keyframes.cameraRotation[sectionIndex].getPoint(progress).z,
 			)
 		}
 		carculateTransform(0.);
@@ -97,12 +92,12 @@ export default function Scene({progress}) {
 		carculateTransform(0.1);
 		if(!config.debug) {
 			camera.position.lerp(
-				keyframes.cameraPosition.getPoint(progress),0.1
+				Keyframes.cameraPosition[sectionIndex].getPoint(progress),0.1
 			)
 			camera.rotation.set(
-				THREE.MathUtils.lerp(camera.rotation.x,keyframes.cameraRotation.getPoint(progress).x,0.1),
-				THREE.MathUtils.lerp(camera.rotation.y,keyframes.cameraRotation.getPoint(progress).y,0.1),
-				THREE.MathUtils.lerp(camera.rotation.z,keyframes.cameraRotation.getPoint(progress).z,0.1),
+				THREE.MathUtils.lerp(camera.rotation.x,Keyframes.cameraRotation[sectionIndex].getPoint(progress).x,0.1),
+				THREE.MathUtils.lerp(camera.rotation.y,Keyframes.cameraRotation[sectionIndex].getPoint(progress).y,0.1),
+				THREE.MathUtils.lerp(camera.rotation.z,Keyframes.cameraRotation[sectionIndex].getPoint(progress).z,0.1),
 			)
 		}
 		setCameraInfo({
@@ -117,14 +112,30 @@ export default function Scene({progress}) {
 				z:camera.rotation.z
 			}
 		})
+		camera.zoom = cameraZoom
+		// camera.updateProjectionMatrix();
+		if (config.debug) {
+			// console.log([
+			// 	cameraInfo.position.x,
+			// 	cameraInfo.position.y,
+			// 	cameraInfo.position.z,
+			// 	cameraInfo.rotation.x,
+			// 	cameraInfo.rotation.y,
+			// 	cameraInfo.rotation.z
+			// ])
+		}
 	})
 	return <>
 		<group ref={groupRef}>
-			<ambientLight intensity={1.75}/>
+			<ambientLight intensity={Keyframes.ambientIntensity[sectionIndex].getPoint(progress).x}/>
 			{config.debug?<OrbitControls ref={orbitRef}/>:<></>}
 			{/* 선라이트 */}
 			<directionalLight ref={lightRef}
-				position={[0,73,0]}
+				position={[
+					Keyframes.sunPosition[sectionIndex].getPoint(progress).x,
+					Keyframes.sunPosition[sectionIndex].getPoint(progress).y,
+					Keyframes.sunPosition[sectionIndex].getPoint(progress).z
+				]}
 				// position={[-73 * 1.0, 73 * 1.0, 73 * 1.0]}
 				intensity={1.0}
 				castShadow={true}
@@ -134,7 +145,7 @@ export default function Scene({progress}) {
 				<orthographicCamera attach="shadow-camera" args={[-128*(0.25), 128*(0.25), -128*(0.25), 128*(0.25), 0.1, 400]} />
 			</directionalLight>
 			<Suspense fallback={null}>
-				<Statue progress={progress}/>
+				<Statue progress={progress} sectionIndex={sectionIndex} gotoActive={gotoActive}/>
 			</Suspense>
 			{/* 그림자 */}
 			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]} receiveShadow>
@@ -142,16 +153,19 @@ export default function Scene({progress}) {
 				<shadowMaterial transparent opacity={0.4} />
 			</mesh>
 		</group>
-		<Html>
-			<div style={{backgroundColor:'#fff'}}>
-				{cameraInfo.position.x}<br/>
-				{cameraInfo.position.y}<br/>
-				{cameraInfo.position.z}<br/>
-				{cameraInfo.rotation.x}<br/>
-				{cameraInfo.rotation.y}<br/>
-				{cameraInfo.rotation.z}<br/>
-
-			</div>
-		</Html>
+		{
+			config.debug
+			?<Html>
+				<div style={{backgroundColor:'#fff'}}>
+					{cameraInfo.position.x}<br/>
+					{cameraInfo.position.y}<br/>
+					{cameraInfo.position.z}<br/>
+					{cameraInfo.rotation.x}<br/>
+					{cameraInfo.rotation.y}<br/>
+					{cameraInfo.rotation.z}<br/>
+				</div>
+			</Html>
+			:<></>
+		}
 	</>
 }
