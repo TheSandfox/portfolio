@@ -1,0 +1,36 @@
+.profileBadgeContainer {
+	display: flex;
+	flex-direction: column;
+	--profile-gap: 24px;
+	gap: var(--profile-gap);
+}
+
+.profileBadgeRow {
+	display: flex;
+	gap: var(--profile-gap);
+}
+
+.profileBadge {
+	flex: 1;
+	border-radius: 8px;
+	padding: 16px;
+	display: flex;
+	gap: var(--profile-gap);
+	align-items: center;
+	box-shadow: var(--shadow-404);
+	color: var(--color-white);
+	&>.icon {
+		user-select: none;
+		pointer-events: none;
+		width: 48px;
+		aspect-ratio: 1;
+	}
+	&>.right {
+		flex: 1;
+		height:auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--profile-gap);
+		text-align: center;
+	}
+}

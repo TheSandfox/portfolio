@@ -1,0 +1,17 @@
+.leftTabContainer {
+	position: sticky;
+	top: 0;
+	left: 0;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	&>.leftTab {
+		cursor: pointer;
+		color: var(--color-darkest);
+		transition: 0.25s;
+		&.active {
+			color: var(--color-white);
+			filter: drop-shadow(var(--shadow-303));
+		}
+	}
+}

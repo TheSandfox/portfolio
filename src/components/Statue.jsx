@@ -147,10 +147,9 @@ export default function Statue({progress, sectionIndex, gotoActive}) {
 			<group 
 				ref={buttonRef} 
 				visible={sectionIndex!==1}
-				onPointerEnter={()=>{setHover(true&&(sectionIndex===0))}}
-				onPointerLeave={()=>{setHover(false)}}
-				onClick={()=>{if(hover){gotoActive();}}}
-				pointerEvents={false}
+				// onPointerEnter={()=>{setHover(true&&(sectionIndex===0))}}
+				// onPointerLeave={()=>{setHover(false)}}
+				// onClick={()=>{if(hover){gotoActive();}}}
 			>
 				{/* 버튼 */}
 				<skinnedMesh

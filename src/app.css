@@ -1,0 +1,180 @@
+@font-face {
+	font-family: 'Ubuntu';
+	src: url('/portfolio/fonts/UbuntuMono-Regular.ttf');
+}
+@font-face {
+	font-family: 'NotoSans';
+	src: url('/portfolio/fonts/NotoSansKR-Regular.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	color:inherit;
+	text-decoration: none;
+	&:visited {
+		color: inherit;
+	}
+	&:active {
+		color: inherit;
+	}
+}
+
+ul, li, ol {
+	list-style: none;
+}
+
+:root {
+	--color-backdrop1: #6ebaf0;
+	--color-backdrop2: #c4f065;
+	--color-backdrop3: #facd53;
+	--color-white: #eeeeee;
+	--color-light: #999999;
+	--color-medium: #2c2c2c;
+	--color-dark: #212121;
+	--color-darkest: #090909;
+	--color-scrollbar-background: #686046;
+	--color-scrollbar-bar: #FFDD6F;
+	--color-scrollbar-hover: #fff1c3;
+	--shadow-202: 2px 2px 0 rgba(0,0,0,0.25);
+	--shadow-303: 3px 3px 0 rgba(0,0,0,0.25);
+	--shadow-404: 4px 4px 0 rgba(0,0,0,0.25);
+	--border-2px: 2px solid var(--color-darkest);
+	font-size: 16px;
+}
+
+.fontTitle {
+	font-family: 'Ubuntu','NotoSans',sans-serif;
+	font-size: 4rem; /* 64/16 */
+	line-height: 5rem; /* 80/16 */
+}
+
+.fontSubTitle {
+	font-family: 'Ubuntu','NotoSans',sans-serif;
+	font-size: 2rem; /* 32/16 */
+	line-height: 2.5rem; /* 40/16 */
+}
+
+.fontMedium {
+	font-family: 'Ubuntu','NotoSans',sans-serif;
+	font-size: 1.5rem; /* 24/16 */
+	line-height: 2rem; /* 32/16 */
+}
+
+.fontMain {
+	font-family: 'Ubuntu','NotoSans',sans-serif;
+	font-size: 1rem; /* 16/16 */
+	line-height: 1.25rem; /* 20/16 */
+}
+
+::-webkit-scrollbar {
+    height: 8px;
+    position: absolute;
+    width: 8px;
+    z-index: 200;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-bar);
+    border-radius: 4px;
+    transition: background-color .25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--color-scrollbar-bar);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-background);
+}
+
+#scene {
+	position: relative;
+}
+
+#sceneContent {
+	background-color: var(--color-gray2);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100dvh;
+}
+
+#sceneProgress {
+	opacity: 0.85;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 8px;
+	background-color: var(--color-scrollbar-background);
+	z-index: 3;
+}
+
+#sceneProgressBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background-color: var(--color-scrollbar-bar);
+	transition: background-color 0.25s;
+	&:hover {
+		background-color: var(--color-scrollbar-hover);
+	}
+}
+
+#canvasWrapper {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	height: 100dvh;
+	background-color: var(--color-backdrop1);
+	/* background-color: var(--color-main); */
+	/* @media screen and (max-width:960px) {
+		height: 540px;
+	}
+	@media screen and (max-width:640px) {
+		height: 360px;
+	}
+	@media screen and (max-width:480px) {
+		height: 240px;
+	} */
+}
+
+#canvas {
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+}
+
+#sceneGradient{
+	position: absolute;
+	user-select: none;
+	background: linear-gradient(
+		180deg,
+		rgba(0,0,0,0), 
+		rgba(0,0,0,0.25)
+	);
+	height: 240px;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	z-index: 3;
+}
+
+#outro {
+	position: relative;
+	z-index: 7;
+	min-height: 100dvh;
+	pointer-events: none;
+	&>* {
+		pointer-events: auto;
+	}
+}

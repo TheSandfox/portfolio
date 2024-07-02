@@ -1,12 +1,14 @@
-import './App.css'
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import './app.css'
+import './common.css'
+import { Canvas } from '@react-three/fiber';
 import Scene from './components/Scene'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three'
-import { Bloom, EffectComposer, SSAO } from '@react-three/postprocessing';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import * as BreakPoint from '/src/utils/breakpoint';
 import BackgroundPanel from './components/BackgroundPanel';
 import Keyframes from './utils/keyframes';
+import Main from './components/Main';
 
 const sceneLength = 2.0;
 const progressOffset = 0.0;
@@ -22,7 +24,7 @@ function App() {
 	//레퍼런스
 	const sceneRef = useRef(null);
 	const canvasRef = useRef(null);
-	const middleRef = useRef(null);
+	const mainRef = useRef(null);
 	const outtroRef = useRef(null);
 	//섹션워프
 	const gotoActive = ()=>{
@@ -32,8 +34,8 @@ function App() {
 	}
 	//지금어디섹션
 	const carculateSectionIndex = ()=>{
-		if (middleRef.current===null) {return 0;}
-		if (middleRef.current.getBoundingClientRect().top<=0.) {
+		if (mainRef.current===null) {return 0;}
+		if (mainRef.current.getBoundingClientRect().top<=0.) {
 			return 1;
 		} else {
 			return 0;
@@ -61,11 +63,11 @@ function App() {
 			//씬 프로그레스
 			setSceneProgress(
 				carculateSceneProgress()
-			)
+			);
 			//섹션인덱스
 			setSectionIndex(
 				carculateSectionIndex()
-			)
+			);
 		}
 		const barTimer = setInterval(()=>{
 			setBarProgress(THREE.MathUtils.lerp(barProgress,sceneProgress,0.1));
@@ -137,11 +139,9 @@ function App() {
 			</div>
 			<div id='sceneGradient'></div>
 		</div>
-		<div id='middle' ref={middleRef}>미들</div>
-		<div id='outtro' ref={outtroRef}>
-			<div>
-				얍얍
-			</div>
+		<Main id={'main'} outerRef={mainRef}/>
+		<div id='outro' ref={outtroRef}>
+			{/* <Outro/> */}
 		</div>
 	</>
 }

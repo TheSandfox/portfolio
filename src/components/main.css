@@ -1,0 +1,14 @@
+#main {
+	background-color: var(--color-darkest);
+	position: relative;
+	z-index: 7;
+	min-height: 100dvh;
+	display: flex;
+	&>.left {
+		background-color: var(--color-dark);
+	}
+	&>.right {
+		background-color: var(--color-darkest);
+		flex: 1;
+	}
+}
