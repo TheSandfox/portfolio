@@ -1,0 +1,63 @@
+const CLONE_PAGE_DATAS = [
+	[
+		{
+			title:'쏘카',
+			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			dateStart:'2024.04.26',
+			dateEnd:'2024.04.26',
+			details:[
+				'',
+				'https://thesandfox.github.io/socar/',
+				'https://github.com/thesandfox/socar'
+			]
+		},
+		{
+			title:'국립공주박물관',
+			imgPath:'/portfolio/thumbnails/thumb_gongjoo.png',
+			dateStart:'2024.02.16',
+			dateEnd:'2024.02.19',
+			details:[
+				'',
+				'https://thesandfox.github.io/socar/',
+				'https://github.com/thesandfox/socar'
+			]
+		}
+	],
+	[
+		{
+			title:'KT&G장학재단',
+			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			dateStart:'2024.02.14',
+			dateEnd:'2024.02.15',
+			details:[
+				'',
+				'https://thesandfox.github.io/socar/',
+				'https://github.com/thesandfox/socar'
+			]
+		},
+		{
+			title:'롯데렌터카 비즈카',
+			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			dateStart:'2024.02.07',
+			dateEnd:'2024.02.08',
+			details:[
+				'',
+				'https://thesandfox.github.io/socar/',
+				'https://github.com/thesandfox/socar'
+			]
+		},
+		{
+			title:'도미노피자',
+			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			dateStart:'2024.02.05',
+			dateEnd:'2024.02.05',
+			details:[
+				'',
+				'https://thesandfox.github.io/socar/',
+				'https://github.com/thesandfox/socar'
+			]
+		},
+	]
+]
+
+export default CLONE_PAGE_DATAS

@@ -9,6 +9,8 @@ import * as BreakPoint from '/src/utils/breakpoint';
 import BackgroundPanel from './components/BackgroundPanel';
 import Keyframes from './utils/keyframes';
 import Main from './components/Main';
+import SystemAlert from './components/SystemAlert';
+import Intro from './components/Intro';
 
 const sceneLength = 2.0;
 const progressOffset = 0.0;
@@ -21,11 +23,19 @@ const zooms = [
 ]
 
 function App() {
+	//시스템얼럿
+	const [systemAlert,setSystemAlert] = useState([null]);
+	const handleSystemAlert = {
+		set:(val)=>{
+			console.log(val);
+			setSystemAlert([val]);
+		}
+	}
 	//레퍼런스
 	const sceneRef = useRef(null);
 	const canvasRef = useRef(null);
 	const mainRef = useRef(null);
-	const outtroRef = useRef(null);
+	const outroRef = useRef(null);
 	//섹션워프
 	const gotoActive = ()=>{
 		const sceneElement = sceneRef.current;
@@ -69,15 +79,16 @@ function App() {
 				carculateSectionIndex()
 			);
 		}
-		const barTimer = setInterval(()=>{
-			setBarProgress(THREE.MathUtils.lerp(barProgress,sceneProgress,0.1));
-		},5)
+		// const barTimer = setInterval(()=>{
+		// 	setBarProgress(THREE.MathUtils.lerp(barProgress,sceneProgress,0.1));
+		// },5)
+		setBarProgress(sceneProgress);
 
 		window.addEventListener('scroll',scrollCallback);
 		
 		return ()=>{
 			window.removeEventListener('scroll',scrollCallback);
-			clearInterval(barTimer);
+			// clearInterval(barTimer);
 		}
 	},[sceneProgress,barProgress]);
 		
@@ -101,7 +112,7 @@ function App() {
 			>
 				{/* 프로그레스바 */}
 				<div id='sceneProgress'>
-					<div id='sceneProgressBar' style={{width:`${100*barProgress}%`}}>
+					<div id='sceneProgressBar' style={{width:`${100*barProgress}%`,transition:'0.25s ease'}}>
 
 					</div>
 				</div>
@@ -131,18 +142,29 @@ function App() {
 									intensity={0.67}
 									mipmapBlur
 								/>
-								{/* <SSAO /> */}
 							</EffectComposer>
 						</Suspense>
 					</Canvas>
 				</div>
+				{/* 소개문구 */}
+				<Intro 
+					title={
+						<>FE개발자 전인탁의<br/>
+						포트폴리오입니다</>
+					}
+					colorString={
+						'var(--color-white)'
+					}
+				>
+				</Intro>
 			</div>
 			<div id='sceneGradient'></div>
 		</div>
-		<Main id={'main'} outerRef={mainRef}/>
-		<div id='outro' ref={outtroRef}>
+		<Main id={'main'} outerRef={mainRef} handleSystemAlert={handleSystemAlert}/>
+		<div id='outro' ref={outroRef}>
 			{/* <Outro/> */}
 		</div>
+		<SystemAlert text={systemAlert}/>
 	</>
 }
 

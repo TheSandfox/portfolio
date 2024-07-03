@@ -1,0 +1,41 @@
+.skillContainer {
+	width: 100%;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	border-radius: 16px;
+	background-color: var(--color-medium);
+	box-shadow: var(--shadow-303);
+	--skill-gap: 12px;
+	&>.title {
+		color: var(--color-white);
+		padding-bottom: 16px;
+		border-bottom: 3px solid var(--color-light);
+	}
+	&>.skillRows {
+		display: flex;
+		flex-direction: column;
+		gap: var(--skill-gap);
+		&>.skillRow {
+			display: flex;
+			gap: var(--skill-gap);
+		}
+	}
+}
+
+.skillIcon {
+	flex:1;
+	font-size: 0;
+	display: flex;
+	justify-content: center;
+	padding: 8px;
+	box-shadow: var(--shadow-303);
+	border-radius: 8px;
+	&>img {
+		user-select: none;
+		pointer-events: none;
+		width: 48px;
+		aspect-ratio: 1;
+	}
+}

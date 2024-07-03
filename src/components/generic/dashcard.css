@@ -1,0 +1,24 @@
+.dashCard {
+	padding: 24px;
+	background-color: var(--color-dark);
+	width: 100%;
+	border-left: 8px solid var(--color-light);
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	&>.middle {
+		flex: 1;
+		&>.title {
+			color: var(--color-white);
+			padding-bottom: 16px;
+			border-bottom: 3px dashed var(--color-light);
+		}
+		&>.content {
+			color: var(--color-light);
+			padding-top:16px;
+			& .fontMain {
+				line-height: 1.5rem;
+			}
+		}
+	}
+}

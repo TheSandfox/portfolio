@@ -7,7 +7,7 @@ import SectionContactMe from '/src/components/sections/SectionContactMe';
 import LeftTab from './lefttab/LeftTab';
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 
-export default function Main({id,outerRef}) {
+export default function Main({id,outerRef,handleSystemAlert}) {
 	const aboutMeRef = useRef(null);
 	const skillsRef = useRef(null);
 	const projectsRef = useRef(null);
@@ -30,7 +30,7 @@ export default function Main({id,outerRef}) {
 		contactMeRef.current
 	]);
 	const scrollFunc = useCallback((index)=>{
-		elements[index].scrollIntoView({ behavior: "smooth" });
+		elements[index].scrollIntoView({ behavior: "smooth",block: "center" });
 	},[elements]);
 	
 	//섹션인덱스 계산함수
@@ -97,7 +97,7 @@ export default function Main({id,outerRef}) {
 			<SectionSkills outerRef={skillsRef}/>
 			<SectionProjects outerRef={projectsRef}/>
 			<SectionClonePages outerRef={clonePagesRef}/>
-			<SectionContactMe outerRef={contactMeRef}/>
+			<SectionContactMe outerRef={contactMeRef} handleSystemAlert={handleSystemAlert}/>
 		</div>
 	</main>
 }

@@ -1,0 +1,69 @@
+.clonePageRows {
+	background-color: var(--color-medium);
+	border-radius: 12px;
+	padding: 24px;
+	gap: 24px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: var(--shadow-404);
+}
+
+.clonePageRow {
+	display: flex;
+	gap: 24px;
+}
+
+.clonePageCard {
+	position: relative;
+	flex: 1;
+	aspect-ratio: 1.778;
+	box-shadow: var(--shadow-303);
+	border-radius: 8px;
+	overflow: hidden;
+	border: var(--border-2px);
+	background-color: var(--color-darkest);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/* 이미지 백드롭 */
+	&>img {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: auto;
+		transform: translateY(-50%);
+	}
+	/* 하단제목&일자 */
+	&>.bottom {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		background-color: rgba(0,0,0,0.67);
+		text-align: center;
+		padding: 8px;
+		&>h4 {
+			color: var(--color-white);
+		}
+		&>p {
+			color: var(--color-light);
+		}
+	}
+	/* 호버시 오버레이 */
+	&>.overlay {
+		background-color: var(--color-medium);
+		position: absolute;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		transition: 0.15s;
+		border-radius: 0;
+	}
+	&:hover {
+		&>.overlay {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.intro {
+	user-select: none;
+	position: absolute;
+	z-index: 16384;
+	height: 100%;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	justify-content: center;
+	&>h1 {
+		filter: drop-shadow(var(--shadow-202));
+	}
+}

@@ -10,5 +10,6 @@
 	&>.right {
 		background-color: var(--color-darkest);
 		flex: 1;
+		overflow-x: hidden;
 	}
 }

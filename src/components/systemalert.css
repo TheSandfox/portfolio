@@ -1,0 +1,18 @@
+.systemAlert {
+	color: var(--color-white);
+	position: fixed;
+	display: block;
+	/* display: none; */
+	opacity: 0;
+	bottom: 64px;
+	left: 50vw;
+	padding: 8px 12px;
+	transform: translate(-50%,0);
+	border-radius: 8192px;
+	background-color: rgba(0, 0, 0, 0.67);
+	z-index: 8192;
+	transition: 0.25s;
+	&.active {
+		opacity: 1;
+	}
+}

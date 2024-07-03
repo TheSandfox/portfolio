@@ -5,7 +5,7 @@ export function ProfileBadge({item}) {
 		<div className="profileBadge" style={{backgroundColor:item.colorString}}>
 			<img className='icon' src={item.imgPath} alt={item.title}/>
 			<div className="right">
-				<p className="title fontMain">{item.title}</p>
+				<h4 className="title fontMain">{item.title}</h4>
 				<p className="content fontMedium">{item.content}</p>
 			</div>
 		</div>
