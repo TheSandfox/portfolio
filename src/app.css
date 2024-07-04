@@ -28,6 +28,10 @@ ul, li, ol {
 	list-style: none;
 }
 
+body {
+	overscroll-behavior-y: contain;
+}
+
 :root {
 	--color-backdrop1: #6ebaf0;
 	--color-backdrop2: #c4f065;
