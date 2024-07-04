@@ -5,7 +5,7 @@ import { SkeletonUtils } from "three-stdlib";
 import { useGraph } from "@react-three/fiber";
 import './scene.css';
 import * as THREE from 'three';
-import Keyframes from '../utils/keyframes';
+import Keyframes from '../datas/keyframes';
 import { Bloom } from '@react-three/postprocessing'
 
 export default function Statue({progress, sectionIndex, gotoActive}) {

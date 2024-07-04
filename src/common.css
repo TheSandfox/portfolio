@@ -1,0 +1,33 @@
+.icon {
+	user-select: none;
+	pointer-events: none;
+}
+
+.gotoActive {
+	cursor: pointer;
+	width: 32px;
+	aspect-ratio: 1;
+	animation-name: gotoActiveFloat;
+	animation-duration: 1.0s;
+	animation-timing-function: ease;
+	animation-iteration-count: infinite;
+	&>.icon {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@keyframes gotoActiveFloat {
+	0% {
+		transform: translateY(0px);
+		opacity: 0.5;
+	}
+	33% {
+		transform: translateY(8px);
+		opacity: 1.0;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 0.5;
+	}
+}

@@ -1,0 +1,13 @@
+#remote {
+	position: fixed;
+	z-index:16383;
+	bottom: 16px;
+	right: 16px;
+	display: flex;
+	gap: 16px;
+	flex-direction: column;
+	@media screen and (max-width:960px) {
+		flex-direction: row;
+		bottom: 6.5rem;
+	}
+}

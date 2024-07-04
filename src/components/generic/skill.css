@@ -1,16 +1,16 @@
 .skillContainer {
 	width: 100%;
-	padding: 32px;
+	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
+	gap: 1.5rem;
 	border-radius: 16px;
 	background-color: var(--color-medium);
 	box-shadow: var(--shadow-303);
 	--skill-gap: 12px;
 	&>.title {
 		color: var(--color-white);
-		padding-bottom: 16px;
+		padding-bottom: 1rem;
 		border-bottom: 3px solid var(--color-light);
 	}
 	&>.skillRows {
@@ -35,7 +35,7 @@
 	&>img {
 		user-select: none;
 		pointer-events: none;
-		width: 48px;
+		width: 3rem;
 		aspect-ratio: 1;
 	}
 }

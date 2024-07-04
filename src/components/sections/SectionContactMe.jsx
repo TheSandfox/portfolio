@@ -1,6 +1,7 @@
 import DashCard from '/src/components/generic/DashCard';
 import './section.css';
 import { ContactIcon, ContactCopy } from '../generic/Contact';
+import { Link } from 'react-router-dom';
 
 export default function SectionContactMe({outerRef,handleSystemAlert}) {
 	return <>
@@ -15,7 +16,7 @@ export default function SectionContactMe({outerRef,handleSystemAlert}) {
 				iconRight={<ContactCopy stringVal={'01072213766'} handleSystemAlert={handleSystemAlert}/>}
 			>
 				<p className='fontMedium'>
-				전인탁: 010-7221-3766 (+821072213766)
+				전인탁: 010-7221-3766
 				</p>
 			</DashCard>
 			<DashCard 
@@ -25,11 +26,11 @@ export default function SectionContactMe({outerRef,handleSystemAlert}) {
 					title:'카카오톡',
 					colorString:'#FFEB3B'
 				}}/>}
-				iconRight={<ContactCopy stringVal={''} handleSystemAlert={handleSystemAlert}/>}
+				iconRight={<ContactCopy stringVal={'https://open.kakao.com/o/sATDcVAg'} handleSystemAlert={handleSystemAlert}/>}
 			>
-				<p className='fontMedium'>
-				(오픈카톡링크넣기)
-				</p>
+				<Link to={'https://open.kakao.com/o/sATDcVAg'} style={{textDecoration:'underline'}} target={'_blank'} className='fontMedium'>
+				https://open.kakao.com/o/sATDcVAg
+				</Link>
 			</DashCard>
 			<DashCard 
 				title={'Discord'}
@@ -38,11 +39,11 @@ export default function SectionContactMe({outerRef,handleSystemAlert}) {
 					title:'디스코드',
 					colorString:'#5C6BC0'
 				}}/>}
-				iconRight={<ContactCopy stringVal={''} handleSystemAlert={handleSystemAlert}/>}
+				iconRight={<ContactCopy stringVal={'https://discord.com/invite/nHBQrSS9'} handleSystemAlert={handleSystemAlert}/>}
 			>
-				<p className='fontMedium'>
-				(디스코드아이디)
-				</p>
+				<Link to={'https://discord.com/invite/nHBQrSS9'} style={{textDecoration:'underline'}} target={'_blank'} className='fontMedium'>
+				https://discord.com/invite/nHBQrSS9
+				</Link>
 			</DashCard>
 			<DashCard 
 				title={'Email'}
@@ -66,9 +67,9 @@ export default function SectionContactMe({outerRef,handleSystemAlert}) {
 				}}/>}
 				iconRight={<ContactCopy stringVal={'https://github.com/thesandfox'} handleSystemAlert={handleSystemAlert}/>}
 			>
-				<p className='fontMedium'>
+				<Link to={'https://github.com/thesandfox'} style={{textDecoration:'underline'}} target={'_blank'} className='fontMedium'>
 				https://github.com/thesandfox
-				</p>
+				</Link>
 			</DashCard>
 		</section>
 	</>

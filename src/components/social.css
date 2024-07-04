@@ -1,0 +1,8 @@
+#social {
+	position: fixed;
+	top: 16px;
+	right: 16px;
+	display: flex;
+	gap: 16px;
+	z-index:16383;
+}

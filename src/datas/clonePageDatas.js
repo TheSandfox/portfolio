@@ -18,43 +18,43 @@ const CLONE_PAGE_DATAS = [
 			dateEnd:'2024.02.19',
 			details:[
 				'',
-				'https://thesandfox.github.io/socar/',
-				'https://github.com/thesandfox/socar'
+				'https://thesandfox.github.io/gongjoo/',
+				'https://github.com/thesandfox/gongjoo'
 			]
 		}
 	],
 	[
 		{
 			title:'KT&G장학재단',
-			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			imgPath:'/portfolio/thumbnails/thumb_ktng.png',
 			dateStart:'2024.02.14',
 			dateEnd:'2024.02.15',
 			details:[
 				'',
-				'https://thesandfox.github.io/socar/',
-				'https://github.com/thesandfox/socar'
+				'https://thesandfox.github.io/ktng/',
+				'https://github.com/thesandfox/ktng'
 			]
 		},
 		{
 			title:'롯데렌터카 비즈카',
-			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			imgPath:'/portfolio/thumbnails/thumb_bizcar.png',
 			dateStart:'2024.02.07',
 			dateEnd:'2024.02.08',
 			details:[
 				'',
-				'https://thesandfox.github.io/socar/',
-				'https://github.com/thesandfox/socar'
+				'https://thesandfox.github.io/bizcar/',
+				'https://github.com/thesandfox/bizcar'
 			]
 		},
 		{
 			title:'도미노피자',
-			imgPath:'/portfolio/thumbnails/thumb_socar.png',
+			imgPath:'/portfolio/thumbnails/thumb_domino.png',
 			dateStart:'2024.02.05',
 			dateEnd:'2024.02.05',
 			details:[
 				'',
-				'https://thesandfox.github.io/socar/',
-				'https://github.com/thesandfox/socar'
+				'https://thesandfox.github.io/domino/',
+				'https://github.com/thesandfox/domino'
 			]
 		},
 	]

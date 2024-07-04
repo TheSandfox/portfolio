@@ -2,19 +2,24 @@ import './lefttab.css';
 
 const LEFTTAB_CONTENTS = [
 	{
-		title:'ABOUTME'
+		title:'ABOUTME',
+		imgPath:'/portfolio/icons/icon_user.png'
 	},
 	{
-		title:'SKILLS'
+		title:'SKILLS',
+		imgPath:'/portfolio/icons/icon_graph.png'
 	},
 	{
-		title:'PROJECTS'
+		title:'PROJECTS',
+		imgPath:'/portfolio/icons/icon_project.png'
 	},
 	{
-		title:'CLONEPAGES'
+		title:'CLONEPAGES',
+		imgPath:'/portfolio/icons/icon_copy2.png'
 	},
 	{
-		title:'CONTACTME'
+		title:'CONTACTME',
+		imgPath:'/portfolio/icons/icon_chat.png'
 	},
 ]
 
@@ -28,7 +33,8 @@ export default function LeftTabContainer({scrollFunc,sectionIndex}) {
 					scrollFunc(index);
 				}}
 			>
-				{item.title}
+				<h2>{item.title}</h2>
+				<img className={'icon'} src={item.imgPath} alt={item.title}/>
 			</li>
 		})}
 	</ul>

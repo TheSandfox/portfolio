@@ -45,6 +45,24 @@ ul, li, ol {
 	--shadow-404: 4px 4px 0 rgba(0,0,0,0.25);
 	--border-2px: 2px solid var(--color-darkest);
 	font-size: 16px;
+	@media screen and (max-width:1535px) {
+		font-size: 15px;
+	}
+	@media screen and (max-width:1440px) {
+		
+	}
+	@media screen and (max-width:1280px) {
+		font-size: 14px;
+	}
+	@media screen and (max-width:960px) {
+		font-size: 12px;
+	}
+	@media screen and (max-width:640px) {
+		font-size: 11px;
+	}
+	@media screen and (max-width:480px) {
+		font-size: 10px;
+	}
 }
 
 .fontTitle {
@@ -167,6 +185,14 @@ ul, li, ol {
 	left: 0;
 	bottom: 0;
 	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding-bottom: 16px;
+	@media screen and (max-width:960px) {
+		height: calc(240px + 5rem);
+		padding-bottom: 7rem;
+	}
 }
 
 #outro {

@@ -5,22 +5,18 @@ import Scene from './components/Scene'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three'
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import * as BreakPoint from '/src/utils/breakpoint';
+import * as BreakPoint from './datas/breakpoint';
 import BackgroundPanel from './components/BackgroundPanel';
-import Keyframes from './utils/keyframes';
+import Keyframes from './datas/keyframes';
 import Main from './components/Main';
 import SystemAlert from './components/SystemAlert';
 import Intro from './components/Intro';
+import Remote from './components/Remote';
+import Social from './components/Social';
 
 const sceneLength = 2.0;
 const progressOffset = 0.0;
 const progressVelocity = 2.25;
-const zooms = [
-	1.0,
-	0.75,
-	0.5,
-	0.33
-]
 
 function App() {
 	//시스템얼럿
@@ -37,15 +33,19 @@ function App() {
 	const mainRef = useRef(null);
 	const outroRef = useRef(null);
 	//섹션워프
-	const gotoActive = ()=>{
+	const gotoActive = (force)=>{
 		const sceneElement = sceneRef.current;
 		if (sceneElement===null) {return;}
-		window.scrollTo({behavior: 'smooth', top:window.innerHeight*(sceneLength/2), left:0});
+		if (window.scrollY>window.innerHeight*(sceneLength/2)||force) {
+			window.scrollTo({behavior: 'smooth', top:window.innerHeight*(sceneLength/2), left:0});
+		} else {
+			window.scrollTo({behavior: 'smooth', top:0, left:0});
+		}
 	}
 	//지금어디섹션
 	const carculateSectionIndex = ()=>{
-		if (mainRef.current===null) {return 0;}
-		if (mainRef.current.getBoundingClientRect().top<=0.) {
+		if (outroRef.current===null) {return 0;}
+		if (outroRef.current.getBoundingClientRect().top<=window.innerHeight) {
 			return 1;
 		} else {
 			return 0;
@@ -111,11 +111,13 @@ function App() {
 				//캔버스 스타일
 			>
 				{/* 프로그레스바 */}
-				<div id='sceneProgress'>
+				{/* <div id='sceneProgress'>
 					<div id='sceneProgressBar' style={{width:`${100*barProgress}%`,transition:'0.25s ease'}}>
 
 					</div>
-				</div>
+				</div> */}
+				{/* 소셜버튼 */}
+				<Social/>
 				{/* 캔버스 */}
 				<div id='canvasWrapper'>
 					<BackgroundPanel colorString={'var(--color-backdrop1)'} visible={true}/>
@@ -130,11 +132,11 @@ function App() {
 							fov:23,
 							near:0.05,
 							far:400,
-							zoom:zooms[zoomIndex],
+							zoom:BreakPoint.zooms[zoomIndex],
 							position:[0,55,73]
 						}}
 					>
-						<Scene progress={sceneProgress} cameraZoom={zooms[zoomIndex]} sectionIndex={sectionIndex} gotoActive={gotoActive}></Scene>
+						<Scene progress={sceneProgress} cameraZoom={BreakPoint.zooms[zoomIndex]} sectionIndex={sectionIndex} gotoActive={gotoActive}></Scene>
 						<Suspense fallback={null}>
 							<EffectComposer smaa>
 								<Bloom 
@@ -148,23 +150,33 @@ function App() {
 				</div>
 				{/* 소개문구 */}
 				<Intro 
-					title={
-						<>FE개발자 전인탁의<br/>
-						포트폴리오입니다</>
-					}
-					colorString={
-						'var(--color-white)'
-					}
+					progress={sceneProgress}
+					sectionIndex={sectionIndex}
+					gotoActive={gotoActive}
 				>
 				</Intro>
+				{/* 소셜버튼 */}
 			</div>
-			<div id='sceneGradient'></div>
+			{/* 그라디언트&godown */}
+			<div id='sceneGradient'>
+				<div className='gotoActive' onClick={()=>{
+					let element = document.querySelector('#main');
+					if (element) {
+						element.scrollIntoView({behavior:'smooth'});
+					}
+				}}>
+					<img className='icon' src={'/portfolio/icons/icon_arrowdown2.png'} alt={'다음으로'}/>
+				</div>
+			</div>
 		</div>
 		<Main id={'main'} outerRef={mainRef} handleSystemAlert={handleSystemAlert}/>
 		<div id='outro' ref={outroRef}>
 			{/* <Outro/> */}
 		</div>
+		{/* 시스템메세지(클립보드 복사 등) */}
 		<SystemAlert text={systemAlert}/>
+		{/* 리모컨 */}
+		<Remote gotoActive={gotoActive}/>
 	</>
 }
 

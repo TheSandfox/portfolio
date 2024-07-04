@@ -4,9 +4,9 @@ import { Suspense } from 'react';
 import './scene.css';
 import * as THREE from 'three';
 import Statue from './Statue';
-import Keyframes from '../utils/keyframes';
+import Keyframes from '../datas/keyframes';
 import { Html, OrbitControls } from '@react-three/drei';
-import config from '../utils/config';
+import config from '../datas/config';
 // import { BreakPoints, useBreakpoint } from '../utils/breakpoint';
 
 export default function Scene({progress, cameraZoom, sectionIndex, gotoActive}) {

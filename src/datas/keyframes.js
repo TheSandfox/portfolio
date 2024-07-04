@@ -2,6 +2,19 @@ import * as THREE from 'three';
 import { ConstantCurve } from './mycurve';
 
 const Keyframes = {
+	introState: [
+		// 인트로
+		new ConstantCurve([
+			0,
+			0,
+			1,
+		]),
+		//엔딩
+		new ConstantCurve([
+			2,
+			2
+		]),
+	],
 	//카메라 위치
 	cameraPosition: [
 		//인트로

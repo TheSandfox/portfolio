@@ -1,5 +1,6 @@
 import './clonepage.css';
 import CLONE_PAGE_DATAS from '/src/datas/clonePageDatas';
+import { ProjectDetailButton } from './Project';
 
 function ClonePageCard({item}) {
 	return <>
@@ -8,7 +9,36 @@ function ClonePageCard({item}) {
 			<img src={item.imgPath} alt={item.title}/>
 			{/* 호버시 오버레이 */}
 			<div className='overlay'>
-
+				{/*  */}
+				<div className='buttons'>
+					<ProjectDetailButton 
+						item={{
+							imgPath:'/portfolio/icons/icon_search.png',
+							title:'자세히 보기',
+							colorString:'#2E7D32'
+						}}
+						hideTitle
+						onClick={()=>{}}
+					/>
+					<ProjectDetailButton 
+						item={{
+							imgPath:'/portfolio/icons/icon_link.png',
+							title:'사이트 바로가기',
+							colorString:'#00A9FF'
+						}}
+						hideTitle
+						to={item.details[1]}
+					/>
+					<ProjectDetailButton 
+						item={{
+							imgPath:'/portfolio/icons/icon_github.png',
+							title:'Github 바로가기',
+							colorString:'#181717'
+						}}
+						hideTitle
+						to={item.details[2]}
+					/>
+				</div>
 			</div>
 			{/* 하단 제목 */}
 			<div className='bottom'>

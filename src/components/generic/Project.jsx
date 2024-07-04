@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import './project.css';
+import PROJECT_DATAS from '/src/datas/projectDatas';
+import { useEffect, useMemo, useState } from 'react';
 
 const PROJECT_TABS = [
 	{
@@ -16,34 +18,38 @@ const PROJECT_TABS = [
 	},
 ]
 
-import PROJECT_DATAS from '/src/datas/projectDatas';
 
 //프로젝트 디테일 버튼
 export function ProjectDetailButton({item,onClick,to,hideTitle,className}) {
+	const configuration = {
+		className:`projectDetailButton${className?(' '+className):''}`,
+		style:{backgroundColor:item.colorString}
+	}
+	const imgJSX = <>
+		<img src={item.imgPath} alt={item.title}/>
+		{hideTitle
+			?null
+			:<p className='fontMedium'>{item.title}</p>
+		}
+	</>
 	return <>{
 		to
 		?<Link 
-			className={`projectDetailButton${className?(' '+className):''}`}
 			to={to}
 			target={'_blank'}
-			style={{backgroundColor:item.colorString}}
+			// className={`projectDetailButton${className?(' '+className):''}`}
+			// style={{backgroundColor:item.colorString}}
+			{...configuration}
 		>
-			<img src={item.imgPath} alt={item.title}/>
-			{hideTitle
-				?null
-				:<p className='fontMedium'>{item.title}</p>
-			}
+			{imgJSX}
 		</Link>
 		:<div 
-			className={`projectDetailButton${className?(' '+className):''}`} 
-			style={{backgroundColor:item.colorString}}
 			onClick={onClick}
+			// className={`projectDetailButton${className?(' '+className):''}`} 
+			// style={{backgroundColor:item.colorString}
+			{...configuration}
 		>
-			<img src={item.imgPath} alt={item.title}/>
-			{hideTitle
-				?null
-				:<p className='fontMedium'>{item.title}</p>
-			}
+			{imgJSX}
 		</div>
 	}</>
 }
@@ -117,11 +123,31 @@ export function ProjectCard({item}) {
 	</div>
 }
 
-export function ProjectCardContainer({filter}) {
+export function ProjectCardContainer({filter,page,itemsPerPage,handleMaxPage}) {
+	//잘려진 배열
+	const items = useMemo(()=>{
+		return PROJECT_DATAS
+			.filter(item=>(item.type===filter||filter===0))
+			.splice(page,itemsPerPage);
+	},[filter,page,PROJECT_DATAS,itemsPerPage]);
+	//맥스페이지 계산
+	const maxPageIndex = useMemo(()=>{
+		let newArr = PROJECT_DATAS
+			.filter(item=>(item.type===filter||filter===0));
+		return Math.ceil(newArr.length/itemsPerPage) - 1
+	},[PROJECT_DATAS,itemsPerPage,filter]);
+	//맥스페이지 내보내기
+	useEffect(()=>{
+		console.log("냥");
+		handleMaxPage.set(maxPageIndex);
+	},[maxPageIndex]);
 	return <div className='projectCardContainer'>
-		{PROJECT_DATAS.filter(item=>(item.type===filter||filter===0)).map((item,index)=>{
-			return <ProjectCard item={item} key={index}/>
-		})}
+		{items
+			?items.map((item,index)=>{
+				return <ProjectCard item={item} key={index}/>
+			})
+			:null
+		}
 	</div>
 }
 
@@ -135,7 +161,7 @@ export function ProjectTab({children,onClick,active}) {
 	</div>
 }
 
-export function ProjectTabs({handleFilter,filter}) {
+export function ProjectTabs({handleFilter,filter,handlePage}) {
 	return <>
 		<ul className='projectTabs'>
 			{PROJECT_TABS.map((item,index)=>{

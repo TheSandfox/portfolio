@@ -57,7 +57,7 @@ export default function SectionAboutMe({outerRef}) {
 					<li className='fontMain'> - WebGL(3D API)을 활용한 Motion UI 프론트엔드 웹앱개발자 양성과정(그린컴퓨터아트학원) 수료 / 2024.08</li>
 				</ul>
 			</DashCard>
-			<DashCard title={'간략소개'}>
+			<DashCard title={'소개'}>
 				<p className='fontMain'>
 					고등학생이 될 무렵 게임 개발에 관심이 생긴 것을 기점으로 프로그래밍에 입문하게 되었습니다. 
 					군 전역 이후에는 JAVA기반 백엔드 어플리케이션 개발 과정을 수료하였고 3D CG분야에도 관심이 생겨서 취미로 독학하다가 

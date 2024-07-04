@@ -1,8 +1,8 @@
 .clonePageRows {
 	background-color: var(--color-medium);
 	border-radius: 12px;
-	padding: 24px;
-	gap: 24px;
+	padding: 1.5rem;
+	gap: 1.5rem;
 	display: flex;
 	flex-direction: column;
 	box-shadow: var(--shadow-404);
@@ -10,7 +10,7 @@
 
 .clonePageRow {
 	display: flex;
-	gap: 24px;
+	gap: 1.5rem;
 }
 
 .clonePageCard {
@@ -41,7 +41,7 @@
 		flex-direction: column;
 		background-color: rgba(0,0,0,0.67);
 		text-align: center;
-		padding: 8px;
+		padding: 0.5rem;
 		&>h4 {
 			color: var(--color-white);
 		}
@@ -51,7 +51,8 @@
 	}
 	/* 호버시 오버레이 */
 	&>.overlay {
-		background-color: var(--color-medium);
+		/* background-color: var(--color-medium); */
+		background-color: rgba(0, 0, 0, 0.67);
 		position: absolute;
 		opacity: 0;
 		width: 100%;
@@ -60,6 +61,15 @@
 		top: 0;
 		transition: 0.15s;
 		border-radius: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		/* 오버레이 컨테이너 버튼들 */
+		&>.buttons {
+			gap: 1rem;
+			display: flex;
+			justify-content: center;
+		}
 	}
 	&:hover {
 		&>.overlay {

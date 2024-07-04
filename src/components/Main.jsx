@@ -30,30 +30,35 @@ export default function Main({id,outerRef,handleSystemAlert}) {
 		contactMeRef.current
 	]);
 	const scrollFunc = useCallback((index)=>{
-		elements[index].scrollIntoView({ behavior: "smooth",block: "center" });
+		elements[index].scrollIntoView({ behavior: "smooth",block: "start"});
 	},[elements]);
 	
 	//섹션인덱스 계산함수
 	const carculateSectionIndex = useCallback(()=>{
-		let carculatedIndex = 0;
+		let carculatedIndex = -1;
 		if (elements[0]===null) {
-			return 0;
+			return -1;
 		}
 		if (elements[0].getBoundingClientRect().top>window.innerHeight) {
-			return 0;
+			return -1;
 		}
 		//
 		elements.forEach((element,index)=>{
-			if (element.getBoundingClientRect().top<=0.) {
+			if (
+				((window.innerHeight-element.getBoundingClientRect().top)
+				/window.innerHeight)
+				>=0.75
+				&&
+				element.getBoundingClientRect().bottom>=0
+			) {
 				carculatedIndex = index;
-				// console.log(carculatedIndex);
 			}
 		});
 		//
 		return carculatedIndex;
 	},[elements]);
 	//섹션인덱스 스테이트
-	const [sectionIndex,setSectionIndex] = useState(0);
+	const [sectionIndex,setSectionIndex] = useState(-1);
 	//엘리먼츠 배열 준비되면 섹션인덱스 초기화
 	useEffect(()=>{
 		if (carculateSectionIndex&&elements[0]) {
@@ -64,20 +69,25 @@ export default function Main({id,outerRef,handleSystemAlert}) {
 	useEffect(()=>{
 		// console.log(elements);
 		const scrollCallback = ()=>{
-			if (elements[0]===null) {
-				return 0;
-			}
-			if (elements[0].getBoundingClientRect().top>window.innerHeight) {
-				return 0;
-			}
-			let carculatedIndex = 0;
-			elements.forEach((element,index)=>{
-				if (element.getBoundingClientRect().top<=0.) {
-					carculatedIndex = index;
-					// console.log(carculatedIndex);
-				}
-			});
-			setSectionIndex(carculatedIndex);
+			setSectionIndex(carculateSectionIndex());
+			// if (elements[0]===null) {
+			// 	return 0;
+			// }
+			// if (elements[0].getBoundingClientRect().top>window.innerHeight) {
+			// 	return 0;
+			// }
+			// let carculatedIndex = 0;
+			// elements.forEach((element,index)=>{
+			// 	if (
+			// 		((window.innerHeight-element.getBoundingClientRect().top)
+			// 		/window.innerHeight)
+			// 		>=0.75
+			// 	) {
+			// 		carculatedIndex = index;
+			// 		// console.log(carculatedIndex);
+			// 	}
+			// });
+			// setSectionIndex(carculatedIndex);
 		}
 		window.addEventListener('scroll',scrollCallback);
 

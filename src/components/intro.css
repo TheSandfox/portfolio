@@ -1,14 +1,71 @@
 .intro {
+	display: none;
 	user-select: none;
 	position: absolute;
-	z-index: 16384;
-	height: 100%;
+	z-index: 8192;
+	height: 90%;
+	top: 0;
 	padding: 32px;
-	display: flex;
 	flex-direction: column;
 	gap: 32px;
 	justify-content: center;
+	transform: translateY(0px);
+	--amplifier: 1;
+	@media screen and (max-width:1280px) {
+		--amplifier: 0.75;
+	}
+	@media screen and (max-width:960px) {
+		--amplifier: 0.50;
+	}
+	@media screen and (max-width:720px) {
+		--amplifier: 0.25;
+	}
+	@media screen and (max-width:480px) {
+		height: 67%;
+		--amplifier: 0.0;
+	}
 	&>h1 {
 		filter: drop-shadow(var(--shadow-202));
+		transition: 0.15s;
+	}
+	/* 첫 번째 소개문구 */
+	&.first {
+		right: calc( 20dvw * var(--amplifier));
+		&>h1 {
+			text-align: right;
+		}
+		&>.bottom {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+	/* 두 번째 소개문구 */
+	&.second {
+		left: calc( 15dvw * var(--amplifier));
+	}
+	/* 감사합니다 */
+	&.third {
+		right: calc( 25dvw * var(--amplifier));
+		&>h1 {
+			text-align: right;
+		}
+	}
+	&.active {
+		display: flex;
+		animation-name: appear;
+		animation-duration: 0.5s;
+		animation-timing-function: ease;
+		animation-iteration-count: 1;
+	}
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+		transform: translateY(32px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
 	}
 }
