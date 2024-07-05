@@ -24,16 +24,14 @@
 		height: 67%;
 		--amplifier: 0.0;
 	}
-	&>h1 {
+	&>.content {
 		filter: drop-shadow(var(--shadow-202));
 		transition: 0.15s;
 	}
 	/* 첫 번째 소개문구 */
 	&.first {
 		right: calc( 20dvw * var(--amplifier));
-		&>h1 {
-			text-align: right;
-		}
+		text-align: right;
 		&>.bottom {
 			display: flex;
 			justify-content: flex-end;
@@ -41,13 +39,15 @@
 	}
 	/* 두 번째 소개문구 */
 	&.second {
-		left: calc( 15dvw * var(--amplifier));
+		left: calc( 30dvw * var(--amplifier));
+		text-align: right;
 	}
 	/* 감사합니다 */
 	&.third {
 		right: calc( 25dvw * var(--amplifier));
 		&>h1 {
 			text-align: right;
+			color: #fff;
 		}
 	}
 	&.active {
@@ -59,6 +59,22 @@
 	}
 }
 
+.denkyu {
+	color: #fff;
+	position: relative;
+	display: inline-block;
+	width:3em;
+	aspect-ratio: 1;
+	transform: translateX(25%);
+	animation-name: denkyuGlow;
+	animation-timing-function: ease;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	&.icon {
+		margin-bottom: 0.5rem;
+	}
+}
+
 @keyframes appear {
 	0% {
 		opacity: 0;
@@ -67,5 +83,20 @@
 	100% {
 		opacity: 1;
 		transform: translateY(0px);
+	}
+}
+
+@keyframes denkyuGlow {
+	0% {
+		transform: translateY(0);
+		filter: brightness(0) drop-shadow(var(--shadow-202));
+	}
+	50% {
+		transform: translateY(-0.5rem);
+		filter: brightness(1) drop-shadow(var(--shadow-202));
+	}
+	100% {
+		transform: translateY(0);
+		filter: brightness(0) drop-shadow(var(--shadow-202));
 	}
 }

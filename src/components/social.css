@@ -6,3 +6,7 @@
 	gap: 1rem;
 	z-index:16383;
 }
+
+body.lock #social {
+	right: calc( 1rem + 8px);
+}

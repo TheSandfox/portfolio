@@ -49,7 +49,7 @@ export default function Main({id,outerRef,handleSystemAlert}) {
 				/window.innerHeight)
 				>=0.75
 				&&
-				element.getBoundingClientRect().bottom>=0
+				element.getBoundingClientRect().bottom>0
 			) {
 				carculatedIndex = index;
 			}
@@ -107,7 +107,7 @@ export default function Main({id,outerRef,handleSystemAlert}) {
 			<SectionSkills outerRef={skillsRef}/>
 			<SectionProjects outerRef={projectsRef}/>
 			<SectionClonePages outerRef={clonePagesRef}/>
-			<SectionContactMe outerRef={contactMeRef} handleSystemAlert={handleSystemAlert}/>
+			<SectionContactMe outerRef={contactMeRef}/>
 		</div>
 	</main>
 }

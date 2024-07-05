@@ -1,17 +1,17 @@
 import {  useFrame, useThree } from '@react-three/fiber';
-import React, { useCallback, useEffect,  useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect,  useRef, useState } from 'react';
 import { Suspense } from 'react';
 import './scene.css';
 import * as THREE from 'three';
-import Statue from './Statue';
+import Statue, { StatueLoading } from './Statue';
 import Keyframes from '../datas/keyframes';
 import { Html, OrbitControls } from '@react-three/drei';
 import config from '../datas/config';
-// import { BreakPoints, useBreakpoint } from '../utils/breakpoint';
+import { AppContext } from '../App';
+import * as BreakPoint from '/src/datas/breakpoint';
 
-export default function Scene({progress, cameraZoom, sectionIndex, gotoActive}) {
-	//브레이크포인트
-	// const breakPoint = useBreakpoint();
+export default function Scene() {
+	const { progress, sectionIndex, breakPoint } = useContext(AppContext);
 
 	//레퍼런스
 	const groupRef = useRef(null);
@@ -112,7 +112,7 @@ export default function Scene({progress, cameraZoom, sectionIndex, gotoActive}) 
 				z:camera.rotation.z
 			}
 		})
-		camera.zoom = cameraZoom
+		camera.zoom = BreakPoint.zooms[breakPoint];
 		// camera.updateProjectionMatrix();
 		if (config.debug) {
 			// console.log([
@@ -144,8 +144,10 @@ export default function Scene({progress, cameraZoom, sectionIndex, gotoActive}) 
 			>
 				<orthographicCamera attach="shadow-camera" args={[-128*(0.25), 128*(0.25), -128*(0.25), 128*(0.25), 0.1, 400]} />
 			</directionalLight>
-			<Suspense fallback={null}>
-				<Statue progress={progress} sectionIndex={sectionIndex} gotoActive={gotoActive}/>
+			<Suspense fallback={<Html position={[0,2.0,0]}>
+				<StatueLoading/>
+			</Html>}>
+				<Statue progress={progress} sectionIndex={sectionIndex}/>
 			</Suspense>
 			{/* 그림자 */}
 			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]} receiveShadow>

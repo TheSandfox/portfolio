@@ -1,0 +1,123 @@
+:root{
+	--detail-thumb-width: 66%;
+	@media screen and (max-width:960px) {
+		--detail-thumb-width: 100%;
+	}
+}
+
+#detail {
+	color: var(--color-white);
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100dvw;
+	height: 100dvh;
+	background-color: rgba(0, 0, 0, 0.55);
+	z-index: 32766;
+	animation: detailAppear 0.25s ease;
+	padding: 1rem calc(2rem + 40px);
+	&>.buttonClose {
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+		z-index: 1;
+	}
+	@media screen and (max-width:960px) {
+		padding: 0
+	}
+}
+
+/* 목업내부 */
+#detailContents {
+	position: relative;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-dark);
+	overflow-y: auto;
+	border-radius: 8px;
+	box-shadow: var(--shadow-303);
+	/* 상단썸네일 */
+	&>.top {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		padding: 2rem;
+		gap: 1.5rem;
+		/* 컬러 백드롭 */
+		&>.backdrop {
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 50%;
+			/* background-color: #000; */
+		}
+		/* 제목 */
+		/* &>h2 {
+			
+		} */
+		/* 이미지컨테이너 */
+		&>.imgContainer {
+			z-index: 1;
+			position: relative;
+			background-color: var(--color-darkest);
+			width: var(--detail-thumb-width);
+			aspect-ratio: 1.77;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			border-radius: 8px;
+			&>.thumbnailBlur {
+				user-select: none;
+				pointer-events: none;
+				position: absolute;
+				z-index: 0;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+				filter: blur(2px) brightness(0.25);
+				transform-origin: 50% 50%;
+				transform: scale(1.25);
+			}
+			&>.thumbnail {
+				position: relative;
+				z-index: 1;
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+		/* 디테일버튼들 */
+		&>.projectDetails {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+	&>.bottom {
+		padding: 1rem;
+		width: var(--detail-thumb-width);
+		margin: 0 auto;
+		&>.description {
+			text-align: center;
+			font-style: italic;
+			padding: 2rem 0;
+			border-bottom: 1px solid var(--color-light);
+		}
+	}
+}
+
+@keyframes detailAppear {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -29,6 +29,7 @@
 	align-items: center;
 	&>.button {
 		font-size: 0;
+		cursor: pointer;
 		&>img {
 			width: 1rem;
 			aspect-ratio: 1;
@@ -60,6 +61,7 @@
 
 /* 프로젝트카드 */
 .projectCard {
+	/* cursor: pointer; */
 	height: 400px;
 	overflow: hidden;
 	background-color: var(--color-medium);
@@ -67,6 +69,8 @@
 	display: flex;
 	flex-direction: column;
 	box-shadow: var(--shadow-404);
+	transition: 0.25s;
+	opacity: 1;
 	&>.top {
 		/* 상단 썸넬 */
 		height: 160px;
@@ -74,10 +78,15 @@
 		position: relative;
 		font-size: 0;
 		transition: 0.25s;
-		/* background-color: #ff00ff; */
+		background-color: var(--color-dark);
+		display: flex;
+		align-items: center;
 		&>img {
 			width: 100%;
 			height: auto;
+		}
+		@media screen and (max-width:480px) {
+			height:128px;
 		}
 	}
 	&>.bottom {
@@ -109,7 +118,7 @@
 			}
 			&>.hover {
 				/* 호버했을때 내용 */
-				/* display: none; */
+				pointer-events: none;
 				position: absolute;
 				display: flex;
 				top: 0;
@@ -119,7 +128,7 @@
 				flex-direction: column;
 				justify-content: center;
 				gap: 2rem;
-				overflow-y: hidden;
+				/* overflow-y: hidden; */
 				transition: 0.25s;
 				opacity: 0;
 				&>h4 {
@@ -130,7 +139,7 @@
 			}
 		}
 	}
-	&:hover{
+	&.active{
 		&>.top {
 			height: 0;
 		}
@@ -142,9 +151,13 @@
 			}
 			&>.hover {
 				/* display: flex; */
+				pointer-events: initial;
 				opacity: 1;
 			}
 		}
+	}
+	&.empty {
+		opacity: 0.33;
 	}
 	@media screen and (max-width:1535px) {
 		height:360px;
@@ -153,17 +166,25 @@
 		height:320px;
 	}
 	@media screen and (max-width:480px) {
-		height:280px;
+		height:240px;
 	}
 }
 
+/* 프로젝트 태그 */
 .projectTags {
 	display: flex;
-	flex-wrap: wrap;
+	/* overflow-x: hidden; */
+	/* flex-wrap: wrap; */
 	gap: 0.5rem;
+	@media screen and (max-width:480px) {
+		display: none;
+	}
 }
 
 .projectTag {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
 	padding: 0.25rem 0.5rem;
 	border: var(--border-2px);
 	border-radius: 4px;
@@ -171,13 +192,14 @@
 	box-shadow: var(--shadow-202);
 	transition: 0.15s;
 	user-select: none;
-	&:hover {
+	/* &:hover {
 		color: var(--color-darkest);
 		background-color: var(--color-white);
 		font-weight: bold;
-	}
+	} */
 }
 
+/* 더보기버튼 */
 .projectDetailButtons {
 	display: flex;
 	flex-direction: column;
@@ -199,6 +221,7 @@
 		pointer-events: none;
 		width: 1.5rem;
 		height: 1.5rem;
+		transition: 0.15s;
 		/* aspect-ratio: 1; */
 	}
 	&>p {

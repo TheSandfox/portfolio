@@ -8,6 +8,16 @@ const zooms = [
 	0.33
 ]
 
+const projectItems = [
+	8,
+	6,
+	6,
+	6,
+	4,
+	4,
+	4
+]
+
 const maxWidth = [
 	1535,
 	1440,
@@ -30,5 +40,6 @@ const get = ()=>{
 
 export {
 	get,
-	zooms
+	zooms,
+	projectItems
 }

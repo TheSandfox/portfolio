@@ -1,11 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import SimpleButton from "./generic/SimpleButton";
 import './remote.css';
+import { AppContext } from "../App";
 
-export default function Remote({gotoActive}) {
+export default function Remote({}) {
+	const { gotoActive } = useContext(AppContext);
 	const goTop = useCallback(()=>{
-		gotoActive();
-		// window.scrollTo({behavior:'smooth',top:0,left:0});
+		// gotoActive();
+		window.scrollTo({behavior:'smooth',top:0,left:0});
 	},[]);
 	const goMiddle = useCallback(()=>{
 		let element = document.querySelector('#main');

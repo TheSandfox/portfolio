@@ -11,3 +11,7 @@
 		bottom: 6.5rem;
 	}
 }
+
+body.lock #remote {
+	right: calc( 1rem + 8px);
+}

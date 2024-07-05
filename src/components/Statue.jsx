@@ -8,7 +8,13 @@ import * as THREE from 'three';
 import Keyframes from '../datas/keyframes';
 import { Bloom } from '@react-three/postprocessing'
 
-export default function Statue({progress, sectionIndex, gotoActive}) {
+export function StatueLoading({}) {
+	return <div className='statueLoading'>
+		<img className='statueLoadingIcon icon' src={'/portfolio/icons/icon_loading.png'}/>
+	</div>
+}
+
+export default function Statue({progress, sectionIndex}) {
 	//커서 오버레이
 	const [hover,setHover] = useState(false);
 	useCursor(hover);

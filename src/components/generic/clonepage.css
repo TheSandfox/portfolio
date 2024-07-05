@@ -11,6 +11,9 @@
 .clonePageRow {
 	display: flex;
 	gap: 1.5rem;
+	@media screen and (max-width:960px) {
+		flex-direction: column;
+	}
 }
 
 .clonePageCard {
@@ -29,10 +32,10 @@
 	&>img {
 		position: absolute;
 		top: 50%;
-		left: 0;
-		width: 100%;
-		height: auto;
-		transform: translateY(-50%);
+		left: 50%;
+		width: auto;
+		height: 100%;
+		transform: translate(-50%,-50%);
 	}
 	/* 하단제목&일자 */
 	&>.bottom {
@@ -53,6 +56,7 @@
 	&>.overlay {
 		/* background-color: var(--color-medium); */
 		background-color: rgba(0, 0, 0, 0.67);
+		pointer-events: none;
 		position: absolute;
 		opacity: 0;
 		width: 100%;
@@ -71,9 +75,10 @@
 			justify-content: center;
 		}
 	}
-	&:hover {
+	&.active {
 		&>.overlay {
 			opacity: 1;
+			pointer-events: initial;
 		}
 	}
 }

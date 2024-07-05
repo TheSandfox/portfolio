@@ -1,4 +1,5 @@
 import DashCard from '../generic/DashCard';
+import SectionTitle from './SectionTitle';
 import './section.css';
 import { ProfileBadgeContainer } from '/src/components/generic/ProfileBadge'
 
@@ -44,6 +45,7 @@ const PROFILE_VALUES = [
 export default function SectionAboutMe({outerRef}) {
 	return <>
 		<section id='aboutMe' ref={outerRef}>
+			<SectionTitle>ABOUTME</SectionTitle>
 			<ProfileBadgeContainer
 				args={PROFILE_VALUES}
 			/>

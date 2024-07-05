@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './project.css';
 import PROJECT_DATAS from '/src/datas/projectDatas';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { AppContext } from '../../App';
 
 const PROJECT_TABS = [
 	{
@@ -56,79 +57,101 @@ export function ProjectDetailButton({item,onClick,to,hideTitle,className}) {
 
 //프로젝트카드
 export function ProjectCard({item}) {
-	return <div className='projectCard'>
-		<div className='top'>
+	const [active,setActive] = useState(false);
+	const { handleDetail } = useContext(AppContext);
+	return <>{
+		item
+		?<div 
+			className={`projectCard${active?' active':''}`} 
+			// onClick={()=>{setActive(!active)}}
+			onMouseEnter={()=>{setActive(true)}}
+			onMouseLeave={()=>{setActive(false)}}
+		>
 			{/* 이미지영역 */}
-			<img src={item.imgPath} alt={item.title}/>
-		</div>
-		<div className='bottom'>
-			<div className='contents'>
+			<div className='top'>
+				<img src={item.imgPath} alt={item.title}/>
+			</div>
+			{/* 하단 */}
+			<div className='bottom'>
 				{/* 제목&설명, 호버시 컨텍스트 */}
-				<div className='nonHover'>
+				<div className='contents'>
 					{/* 호버안함 */}
-					<div className='top'>
+					<div className='nonHover'>
 						{/* 제목&날짜 */}
-						<h4 className='fontMedium'>{item.title}</h4>
-						<p className='fontMain'>{`${item.dateStart} ~ ${item.dateEnd}`}</p>
-					</div>
-					<div className='bottom'>
+						<div className='top'>
+							<h4 className='fontMedium'>{item.title}</h4>
+							<p className='fontMain'>{`${item.dateStart} ~ ${item.dateEnd}`}</p>
+						</div>
 						{/* 설명 */}
-						<p className='fontMain'>
-							{item.description}
-						</p>
+						<div className='bottom'>
+							<p className='fontMain'>
+								{item.description}
+							</p>
+						</div>
 					</div>
-				</div>
-				<div className='hover'>
 					{/* 호버함 */}
-					<h4 className='fontSubTitle'>
-						{item.title}
-					</h4>
-					<div className='projectDetailButtons'>
-						<ProjectDetailButton 
-							item={{
-								imgPath:'/portfolio/icons/icon_search.png',
-								title:'자세히 보기',
-								colorString:'#2E7D32'
-							}}
-							onClick={()=>{}}
-						/>
-						<ProjectDetailButton 
-							item={{
-								imgPath:'/portfolio/icons/icon_link.png',
-								title:'사이트 바로가기',
-								colorString:'#00A9FF'
-							}}
-							to={item.details[1]}
-						/>
-						<ProjectDetailButton 
-							item={{
-								imgPath:'/portfolio/icons/icon_github.png',
-								title:'Github 바로가기',
-								colorString:'#181717'
-							}}
-							to={item.details[2]}
-						/>
+					<div className='hover'>
+						<h4 className='fontSubTitle'>
+							{item.title}
+						</h4>
+						<div className='projectDetailButtons'>
+							<ProjectDetailButton 
+								item={{
+									imgPath:'/portfolio/icons/icon_search.png',
+									title:'자세히 보기',
+									colorString:'#2E7D32'
+								}}
+								onClick={()=>{handleDetail.set({...item});}}
+							/>
+							<ProjectDetailButton 
+								item={{
+									imgPath:'/portfolio/icons/icon_link.png',
+									title:'사이트 바로가기',
+									colorString:'#00A9FF'
+								}}
+								to={item.details[1]}
+							/>
+							<ProjectDetailButton 
+								item={{
+									imgPath:'/portfolio/icons/icon_github.png',
+									title:'Github 바로가기',
+									colorString:'#181717'
+								}}
+								to={item.details[2]}
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-			{/* 태그자리 */}
-			<div className='projectTags fontMain'>
-				{item.tags.map((tag,index)=>{
-					return <div className='projectTag' key={index}>
-						{tag}
-					</div>
-				})}
+				{/* 태그자리 */}
+				<div className='projectTags fontMain'>
+					{item.tags.map((tag,index)=>{
+						return <div className='projectTag' key={index}>
+							{tag}
+						</div>
+					})}
+				</div>
 			</div>
 		</div>
-	</div>
+		:<div className='projectCard empty'>
+
+		</div>
+	}</>
+		
 }
 
 export function ProjectCardContainer({filter,page,itemsPerPage,handleMaxPage}) {
 	//잘려진 배열
 	const items = useMemo(()=>{
-		return PROJECT_DATAS
+		let arr1 = PROJECT_DATAS
 			.filter(item=>(item.type===filter||filter===0))
-			.splice(page,itemsPerPage);
+			.splice(page*itemsPerPage,itemsPerPage);
+		return new Array(itemsPerPage).fill(null).map((val,index)=>{
+			if (arr1[index]) {
+				return arr1[index];
+			} else {
+				return null;
+			}
+		})
 	},[filter,page,PROJECT_DATAS,itemsPerPage]);
 	//맥스페이지 계산
 	const maxPageIndex = useMemo(()=>{
@@ -138,7 +161,6 @@ export function ProjectCardContainer({filter,page,itemsPerPage,handleMaxPage}) {
 	},[PROJECT_DATAS,itemsPerPage,filter]);
 	//맥스페이지 내보내기
 	useEffect(()=>{
-		console.log("냥");
 		handleMaxPage.set(maxPageIndex);
 	},[maxPageIndex]);
 	return <div className='projectCardContainer'>
@@ -161,7 +183,7 @@ export function ProjectTab({children,onClick,active}) {
 	</div>
 }
 
-export function ProjectTabs({handleFilter,filter,handlePage}) {
+export function ProjectTabs({handleFilter,filter}) {
 	return <>
 		<ul className='projectTabs'>
 			{PROJECT_TABS.map((item,index)=>{

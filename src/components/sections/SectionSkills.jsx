@@ -1,4 +1,5 @@
 import { SkillContainer } from '../generic/Skill';
+import SectionTitle from './SectionTitle';
 import './section.css';
 
 const SKILLS = [
@@ -134,15 +135,18 @@ const SKILLS = [
 export default function SectionSkills({outerRef}) {
 	return <>
 		<section id="skills" ref={outerRef}>
-			<div className='skillsDivision'>
-				<SkillContainer title={'FrontEnd'} args={SKILLS[0]}/>
-			</div>
-			<div className='skillsDivision'>
-				<SkillContainer title={'BackEnd'} args={SKILLS[1]}/>
-				<SkillContainer title={'Graphics'} args={SKILLS[2]}/>
-			</div>
-			<div className='skillsDivision'>
-				<SkillContainer title={'Tools'} args={SKILLS[3]}/>
+			<SectionTitle>SKILLS</SectionTitle>
+			<div className='contents'>
+				<div className='skillsDivision'>
+					<SkillContainer title={'FrontEnd'} args={SKILLS[0]}/>
+				</div>
+				<div className='skillsDivision'>
+					<SkillContainer title={'BackEnd'} args={SKILLS[1]}/>
+					<SkillContainer title={'Graphics'} args={SKILLS[2]}/>
+				</div>
+				<div className='skillsDivision'>
+					<SkillContainer title={'Tools'} args={SKILLS[3]}/>
+				</div>
 			</div>
 		</section>
 	</>

@@ -6,7 +6,7 @@ const CLONE_PAGE_DATAS = [
 			dateStart:'2024.04.26',
 			dateEnd:'2024.04.26',
 			details:[
-				'',
+				'socar',
 				'https://thesandfox.github.io/socar/',
 				'https://github.com/thesandfox/socar'
 			]
@@ -17,7 +17,7 @@ const CLONE_PAGE_DATAS = [
 			dateStart:'2024.02.16',
 			dateEnd:'2024.02.19',
 			details:[
-				'',
+				'gongjoo',
 				'https://thesandfox.github.io/gongjoo/',
 				'https://github.com/thesandfox/gongjoo'
 			]
@@ -30,7 +30,7 @@ const CLONE_PAGE_DATAS = [
 			dateStart:'2024.02.14',
 			dateEnd:'2024.02.15',
 			details:[
-				'',
+				'ktng',
 				'https://thesandfox.github.io/ktng/',
 				'https://github.com/thesandfox/ktng'
 			]
@@ -41,7 +41,7 @@ const CLONE_PAGE_DATAS = [
 			dateStart:'2024.02.07',
 			dateEnd:'2024.02.08',
 			details:[
-				'',
+				'bizcar',
 				'https://thesandfox.github.io/bizcar/',
 				'https://github.com/thesandfox/bizcar'
 			]
@@ -52,7 +52,7 @@ const CLONE_PAGE_DATAS = [
 			dateStart:'2024.02.05',
 			dateEnd:'2024.02.05',
 			details:[
-				'',
+				'domino',
 				'https://thesandfox.github.io/domino/',
 				'https://github.com/thesandfox/domino'
 			]

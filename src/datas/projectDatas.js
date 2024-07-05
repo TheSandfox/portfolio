@@ -1,21 +1,21 @@
 const PROJECT_DATAS = [
 	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
+		title:'포트폴리오 페이지',
+		imgPath:'/portfolio/thumbnails/thumb_portfolio.png',
+		dateStart:'2024.06.19',
+		dateEnd:'2024.07.05',
+		description:'\"바로 지금 여기\"',
 		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
+			'portfolio',
+			'https://thesandfox.github.io/portfolio/',
+			'https://github.com/TheSandfox/portfolio'
 		],
 		tags:[
-			'팀',
+			'솔로',
 			'반응형',
-			'TourAPI4.0'
+			'three.js'
 		],
-		type:1
+		type:2
 	},
 	{
 		title:'대한민국 밤산책',
@@ -24,124 +24,50 @@ const PROJECT_DATAS = [
 		dateEnd:'2024.06.18',
 		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
 		details:[
-			'',
+			'bandifesta',
 			'https://thesandfox.github.io/bandifesta/',
 			'https://github.com/TheSandfox/bandifesta'
 		],
 		tags:[
-			'팀',
-			'반응형',
+			'팀플',
 			'TourAPI4.0'
 		],
 		type:1
 	},
 	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
+		title:'다용도 룰렛',
+		imgPath:'/portfolio/thumbnails/thumb_slotmachine.png',
+		dateStart:'2024.04',
+		dateEnd:'2024.04',
+		description:'다용도로 활용할 수 있는 룰렛입니다.',
 		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
+			'slotmachine',
+			'https://thesandfox.github.io/slotmachine/',
+			'https://github.com/TheSandfox/slotmachine'
 		],
 		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
+			'토이',
+			'작명',
+			'룰렛',
 		],
-		type:1
+		type:3
 	},
 	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
+		title:'단어장.jsx',
+		imgPath:'/portfolio/thumbnails/thumb_dictionary.png',
+		dateStart:'2024.04',
+		dateEnd:'2024.04',
+		description:'로컬스토리지 기반의 단어장입니다.',
 		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
+			'dictionary',
+			'https://thesandfox.github.io/dictionary/',
+			'https://github.com/TheSandfox/dictionary'
 		],
 		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
+			'토이',
+			'단어장'
 		],
-		type:1
-	},
-	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
-		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
-		],
-		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
-		],
-		type:1
-	},
-	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
-		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
-		],
-		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
-		],
-		type:1
-	},
-	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
-		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
-		],
-		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
-		],
-		type:1
-	},
-	{
-		title:'대한민국 밤산책',
-		imgPath:'/portfolio/thumbnails/thumb_bandifesta.png',
-		dateStart:'2024.05.16',
-		dateEnd:'2024.06.18',
-		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
-		details:[
-			'',
-			'https://thesandfox.github.io/bandifesta/',
-			'https://github.com/TheSandfox/bandifesta'
-		],
-		tags:[
-			'팀',
-			'반응형',
-			'TourAPI4.0'
-		],
-		type:1
+		type:3
 	},
 ]
 

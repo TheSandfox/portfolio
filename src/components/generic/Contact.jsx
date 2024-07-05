@@ -1,7 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import './contact.css'
+import { AppContext } from '../../App';
 
-export function ContactCopy({stringVal,handleSystemAlert}) {
+export function ContactCopy({stringVal}) {
+	const { handleSystemAlert } = useContext(AppContext);
 	const clickCallback = useCallback(()=>{
 		navigator.clipboard.writeText(stringVal).then(() => {
 			handleSystemAlert.set('클립보드에 복사하였습니다');

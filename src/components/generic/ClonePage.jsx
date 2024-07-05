@@ -1,10 +1,18 @@
 import './clonepage.css';
 import CLONE_PAGE_DATAS from '/src/datas/clonePageDatas';
 import { ProjectDetailButton } from './Project';
+import { useContext, useState } from 'react';
+import { AppContext } from '../../App';
 
 function ClonePageCard({item}) {
+	const { handleDetail } = useContext(AppContext);
+	const [active,setActive] = useState(false);
 	return <>
-		<div className='clonePageCard'>
+		<div 
+			className={`clonePageCard${active?' active':''}`}
+			onMouseEnter={()=>{setActive(true)}}
+			onMouseLeave={()=>{setActive(false)}}
+		>
 			{/*이미지 백드롭*/}
 			<img src={item.imgPath} alt={item.title}/>
 			{/* 호버시 오버레이 */}
@@ -18,7 +26,7 @@ function ClonePageCard({item}) {
 							colorString:'#2E7D32'
 						}}
 						hideTitle
-						onClick={()=>{}}
+						onClick={()=>{handleDetail.set({...item});}}
 					/>
 					<ProjectDetailButton 
 						item={{

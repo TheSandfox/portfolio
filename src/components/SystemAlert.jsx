@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import './systemalert.css';
+import { AppContext } from "../App";
 
-export default function SystemAlert({text}) {
+export default function SystemAlert() {
+	const { systemAlert } = useContext(AppContext);
 	const alertRef = useRef(null);
 	const [display,setDisplay] = useState([null]);
 	useEffect(()=>{
-		// if (text.length>0) {
-			setDisplay(text);
-		// }
-	},[text]);
+		setDisplay(systemAlert);
+	},[systemAlert]);
 	useEffect(()=>{
 		if (display[0]===null) {return;}
 		if (alertRef.current===null) {return;}
