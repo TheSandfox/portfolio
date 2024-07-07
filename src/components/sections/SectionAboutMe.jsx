@@ -52,7 +52,7 @@ export default function SectionAboutMe({outerRef}) {
 			<DashCard title={'이력사항&자격증'}>
 				<ul>
 					<li className='fontMain'> - 수택고등학교 졸업 / 2013.02</li>
-					<li className='fontMain'> - (군복무사항기재) / 2015.11 ~ 2017.08</li>
+					<li className='fontMain'> - 육군 만기전역 / 2015.11 ~ 2017.08</li>
 					<li className='fontMain'> - 빅데이터 활용 JAVA기반 SW개발자 양성과정(중앙정보처리학원) 수료 / 2018.08</li>
 					<li className='fontMain'> - SQL개발자(SQLD자격) 취득 / 2024.06</li>
 					<li className='fontMain'> - 웹디자인기능사 취득 / 2024.06</li>
