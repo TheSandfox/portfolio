@@ -35,6 +35,23 @@ const PROJECT_DATAS = [
 		type:1
 	},
 	{
+		title:'SandfoxArchive',
+		imgPath:'/portfolio/thumbnails/thumb_sandfoxarchive.png',
+		dateStart:'2023.08',
+		dateEnd:'2023.08',
+		description:'React입문 시기에 제작중이던 워크래프트3 유즈맵의 정보를 제공하기 위해 만들어진 페이지입니다.',
+		details:[
+			'sandfoxarchive',
+			'https://sandfoxarchive.info',
+			'https://github.com/TheSandfox/SandfoxArchive'
+		],
+		tags:[
+			'솔로',
+			'반응형'
+		],
+		type:2
+	},
+	{
 		title:'다용도 룰렛',
 		imgPath:'/portfolio/thumbnails/thumb_slotmachine.png',
 		dateStart:'2024.04',
