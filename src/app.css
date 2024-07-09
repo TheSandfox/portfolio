@@ -72,8 +72,8 @@ body.lock {
 
 .fontTitle {
 	font-family: 'Ubuntu','NotoSans',sans-serif;
-	font-size: 3rem; /* 48/16 */
-	line-height: 4rem; /* 64/16 */
+	font-size: 3rem; 	/* 48/16 */
+	line-height: 4rem; 	/* 64/16 */
 }
 
 .fontSubTitle {
