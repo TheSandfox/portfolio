@@ -42,10 +42,10 @@ export default function SectionContactMe({outerRef}) {
 						title:'디스코드',
 						colorString:'#5C6BC0'
 					}}/>}
-					iconRight={<ContactCopy stringVal={'https://discord.com/invite/nHBQrSS9'}/>}
+					iconRight={<ContactCopy stringVal={'https://discord.com/users/Sandfox#5560'}/>}
 				>
-					<Link to={'https://discord.com/invite/nHBQrSS9'} style={{textDecoration:'underline'}} target={'_blank'} className='fontMedium'>
-					https://discord.com/invite/nHBQrSS9
+					<Link to={'https://discord.com/users/Sandfox#5560'} style={{textDecoration:'underline'}} target={'_blank'} className='fontMedium'>
+					https://discord.com/users/Sandfox#5560
 					</Link>
 				</DashCard>
 				<DashCard 
