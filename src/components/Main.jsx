@@ -70,24 +70,6 @@ export default function Main({id,outerRef,handleSystemAlert}) {
 		// console.log(elements);
 		const scrollCallback = ()=>{
 			setSectionIndex(carculateSectionIndex());
-			// if (elements[0]===null) {
-			// 	return 0;
-			// }
-			// if (elements[0].getBoundingClientRect().top>window.innerHeight) {
-			// 	return 0;
-			// }
-			// let carculatedIndex = 0;
-			// elements.forEach((element,index)=>{
-			// 	if (
-			// 		((window.innerHeight-element.getBoundingClientRect().top)
-			// 		/window.innerHeight)
-			// 		>=0.75
-			// 	) {
-			// 		carculatedIndex = index;
-			// 		// console.log(carculatedIndex);
-			// 	}
-			// });
-			// setSectionIndex(carculatedIndex);
 		}
 		window.addEventListener('scroll',scrollCallback);
 
