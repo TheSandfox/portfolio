@@ -71,8 +71,8 @@ const PROJECT_DATAS = [
 	{
 		title:'다용도 룰렛',
 		imgPath:'/portfolio/thumbnails/thumb_slotmachine.png',
-		dateStart:'2024.04',
-		dateEnd:'2024.04',
+		dateStart:'2024.08',
+		dateEnd:'2024.08',
 		description:'다용도로 활용할 수 있는 룰렛입니다.',
 		details:[
 			'slotmachine',
