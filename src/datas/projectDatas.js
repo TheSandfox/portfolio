@@ -35,6 +35,23 @@ const PROJECT_DATAS = [
 		type:1
 	},
 	{
+		title:'EZDOMATH',
+		imgPath:'/portfolio/thumbnails/thumb_ezdomath.png',
+		dateStart:'2024.07.08',
+		dateEnd:'2024.08.09',
+		description:'3D 도형을 이용한 수학 학습 웹사이트입니다.',
+		details:[
+			'ezdomath',
+			'https://thesandfox.github.io/ezdomath/',
+			'https://github.com/TheSandfox/ezdomath'
+		],
+		tags:[
+			'팀플',
+			'r3f'
+		],
+		type:1
+	},
+	{
 		title:'SandfoxArchive',
 		imgPath:'/portfolio/thumbnails/thumb_sandfoxarchive.png',
 		dateStart:'2023.08',
