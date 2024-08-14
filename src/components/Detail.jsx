@@ -31,6 +31,12 @@ export default function Detail() {
 			window.removeEventListener('keyup',escapeCallback);
 		}
 	},[visible,handleDetail]);
+	const detailJSX = useMemo(()=>{
+		if(detail===null) {return <></>;}
+		let NewFunc = detail.details[0];
+		if(typeof(NewFunc)!=='function') {return <></>;}
+		return <NewFunc></NewFunc>;
+	},[detail]); 
 	return <>{
 		visible
 		?<div id="detail" className='fontMain'>
@@ -81,7 +87,9 @@ export default function Detail() {
 						{detail.description}
 					</p>
 					{/* 상세설명 */}
-					<></>
+					<p className='fontMain detail'>
+					 {detailJSX}
+					</p>
 				</div>
 			</div>
 			<SimpleButton 

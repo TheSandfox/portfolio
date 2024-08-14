@@ -1,3 +1,5 @@
+import { bandifesta, portfolio } from "./detailDocuments";
+
 const PROJECT_DATAS = [
 	{
 		title:'포트폴리오 페이지',
@@ -6,7 +8,7 @@ const PROJECT_DATAS = [
 		dateEnd:'2024.07.05',
 		description:'\"바로 지금 여기\"',
 		details:[
-			'portfolio',
+			portfolio,
 			'https://thesandfox.github.io/portfolio/',
 			'https://github.com/TheSandfox/portfolio'
 		],
@@ -24,7 +26,7 @@ const PROJECT_DATAS = [
 		dateEnd:'2024.06.18',
 		description:'경복궁별빛야행 및 다른 축제들의 정보를 제공하는 사이트입니다.',
 		details:[
-			'bandifesta',
+			bandifesta,
 			'https://thesandfox.github.io/bandifesta/',
 			'https://github.com/TheSandfox/bandifesta'
 		],
